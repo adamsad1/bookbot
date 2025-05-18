@@ -5,6 +5,8 @@ def get_book_text(file_path):
     return file_contents
 
 def main():
-    print(get_book_text("./books/frankenstein.txt"))
+    file_contents = get_book_text("./books/frankenstein.txt")
+    file_length = len(file_contents.split())
+    print(f'{file_length} words found in the document')
 
 main()
