@@ -1,4 +1,4 @@
-from stats import get_num_words
+from stats import *
 
 def get_book_text(file_path):
     with open(file_path, "r") as f:
@@ -7,8 +7,21 @@ def get_book_text(file_path):
     return file_contents
 
 def main():
-    file_contents = get_book_text("./books/frankenstein.txt")
+    file_path = "./books/frankenstein.txt" 
+    file_contents = get_book_text(file_path)
     file_length = get_num_words(file_contents)
-    print(f'{file_length} words found in the document')
+    letter_count = get_unique_letters(file_contents)
+    sorted_list = sort_list(letter_count)
+
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at ", file_path)
+    print("----------- Word Count ----------")
+    print(f'Found {file_length} total words')
+    print("--------- Character Count -------")
+    for i in sorted_list:
+        if i["char"].isalpha() == True:
+            print(i["char"], ": ", i["num"], sep='')
+    print("============= END ===============")
+    #print(letter_count)
 
 main()
