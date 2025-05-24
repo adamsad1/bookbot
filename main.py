@@ -1,4 +1,5 @@
 from stats import *
+import sys
 
 def get_book_text(file_path):
     with open(file_path, "r") as f:
@@ -7,7 +8,12 @@ def get_book_text(file_path):
     return file_contents
 
 def main():
-    file_path = "./books/frankenstein.txt" 
+    try:
+        file_path = sys.argv[1]
+    except:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
     file_contents = get_book_text(file_path)
     file_length = get_num_words(file_contents)
     letter_count = get_unique_letters(file_contents)
